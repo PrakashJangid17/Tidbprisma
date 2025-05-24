@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardHeader, CardBody } from "@nextui-org/react";
+import { Card, CardBody } from "@nextui-org/react";
 
  import PageBreadcrumbs from "@/Components/PageBreadcrumbs/PageBreadcrumbs"; 
 export default function CartPage() {
