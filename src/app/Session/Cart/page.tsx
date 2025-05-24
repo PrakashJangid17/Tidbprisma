@@ -7,7 +7,7 @@ export default function CartPage() {
   return (
     <main className="min-h-screen bg-white px-4 py-6 sm:px-6 lg:px-8 mt-2 rounded-lg">
       <PageBreadcrumbs label={"Cart"} />
-      <hr className="my-4 border-gray-200 mb-5" />
+      {/* <hr className="my-4 border-gray-200 mb-5" /> */}
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
           Welcome to <span className="text-blue-600">Shopping Cart</span>
