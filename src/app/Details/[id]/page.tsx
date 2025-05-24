@@ -14,8 +14,8 @@ export default function DetailsPage() {
 
   return (
     <div className="min-h-screen bg-white p-8 mt-6 rounded-lg">
-      <PageBreadcrumbs label={"Cart"} />
-      <hr className="my-4" />
+      <PageBreadcrumbs label={"View Details"} />
+
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Image Details
       </h1>
