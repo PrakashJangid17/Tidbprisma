@@ -7,7 +7,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-md rounded-md px-4 py-2 sm:py-4 flex flex-wrap items-center justify-between gap-4 sm:gap-0 ml-6 mr-6">
+    <nav className="bg-white shadow-md rounded-md px-4 py-2 sm:py-4 flex flex-wrap items-center justify-between gap-4 sm:gap-0">
       {/* Left: Menu Dropdown */}
       <div className="relative">
         <button
