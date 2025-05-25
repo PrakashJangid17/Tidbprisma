@@ -31,15 +31,14 @@ const handleAddToCart = (product: { id: number; name: string; price: number }) =
     const existingCart = localStorage.getItem('cart');
     const cart = existingCart ? JSON.parse(existingCart) : [];
 
-    const existingIndex = cart.findIndex((item: any) => item.id === product.id);
+    const existingIndex = cart.findIndex((item: { id: number }) => item.id === product.id);
     if (existingIndex !== -1) {
       cart[existingIndex].quantity += 1;
     } else {
       cart.push({ ...product, quantity: 1 });
     }
-
     localStorage.setItem('cart', JSON.stringify(cart));
-    router.push('/Addtocart'); // ✅ fixed path
+    router.push('/Addtocart'); 
   }
 };
 

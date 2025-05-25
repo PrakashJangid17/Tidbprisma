@@ -5,8 +5,17 @@ import { TrashIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import PageBreadcrumbs from '@/Components/PageBreadcrumbs/PageBreadcrumbs';
 
+// ✅ Define proper type for cart items
+interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  image?: string;
+}
+
 export default function CartPage() {
-  const [cart, setCart] = useState<any[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const storedCart = localStorage.getItem('cart');
@@ -15,7 +24,7 @@ export default function CartPage() {
     }
   }, []);
 
-  const updateCart = (newCart: any[]) => {
+  const updateCart = (newCart: CartItem[]) => {
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
   };
