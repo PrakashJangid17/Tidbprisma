@@ -16,8 +16,8 @@ export default function DetailsPage() {
     <div className="min-h-screen bg-white p-8 mt-6 rounded-lg">
       <PageBreadcrumbs label={"View Details"} />
 
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        Image Details
+      <h1 className="text-3xl font-bold text-gray-800 mt-4 mb-6">
+        Item Details
       </h1>
 
       <div className="flex flex-col sm:flex-row gap-10">

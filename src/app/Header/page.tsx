@@ -86,7 +86,7 @@ export default function Home() {
 
       {/* Right: Cart Icon */}
       <div className="flex items-center sm:justify-end">
-        <Link href="/Session/Cart">
+        <Link href="/Addtocart">
           <div className="p-2 hover:bg-gray-100 cursor-pointer rounded-full">
             <ShoppingCartIcon className="h-6 w-6 text-blue-600" />
           </div>
