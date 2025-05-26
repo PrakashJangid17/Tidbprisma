@@ -44,16 +44,14 @@ import { BookmarkIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
             <h3 className="text-sm font-semibold text-gray-700 mb-2">Book Type</h3>
             <ul className="space-y-1 text-sm text-gray-600">
               {[
-                { name: "Magazine", href: "/books/magazine" },
-                { name: "Novel", href: "/books/novel" },
-                { name: "Life", href: "/books/life" },
-                { name: "Arts", href: "/books/arts" },
-                { name: "Comics", href: "/books/comics" },
-                { name: "Education & Reference", href: "/books/education" },
-                { name: "Humanities & Social Sciences", href: "/books/humanities" },
-                { name: "Science & Technology", href: "/books/science" },
-                { name: "Kids", href: "/books/kids" },
-                { name: "Sports", href: "/books/sports" },
+                
+                { name: "All Item", href: "/Menu/Allitem" },
+                { name: "Books", href: "/Menu/Books" },
+                { name: "Smart Phones", href: "/Menu/Phone" },
+                { name: "Coolers", href: "/Menu/Coolers" },
+                { name: "Bags & Pants", href: "/Menu/BagsPants" },
+                { name: "Laptops", href: "/Menu/Laptops" },
+                
               ].map(({ name, href }) => (
                 <li key={name} className="px-2 py-1 rounded hover:bg-gray-100">
                   <Link href={href} className="block w-full text-gray-600 hover:text-gray-800">
