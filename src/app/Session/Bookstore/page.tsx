@@ -16,15 +16,13 @@ export default function Home() {
   const router = useRouter();
 
   const cards = [
-    { id: 1, name: "Joint Photographic Experts Group", image: "/1.jpeg", price: 199.99, stars: 3 },
-    { id: 2, name: "Sample Image 2", image: "/2.jpeg", price: 149.99, stars: 4 },
-    { id: 3, name: "Sample Image 3", image: "/3.jpeg", price: 179.99, stars: 5 },
-    { id: 4, name: "Sample Image 4", image: "/4.jpeg", price: 159.99, stars: 4 },
-    { id: 5, name: "Sample Image 5", image: "/5.jpeg", price: 139.99, stars: 4 },
-    { id: 6, name: "Sample Image 6", image: "/6.jpeg", price: 189.99, stars: 4 },
-    { id: 7, name: "Sample Image 7", image: "/7.jpeg", price: 209.99, stars: 5 },
-    { id: 8, name: "Sample Image 8", image: "/8.jpeg", price: 99.99, stars: 4 },
-    { id: 9, name: "Sample Image 9", image: "/9.jpeg", price: 299.99, stars: 5 },
+    { id: 1, name: "Constitution Of India", image: "/001.jpeg", price: 199.99, stars: 3 },
+    { id: 2, name: "3 Best water air cooler", image: "/coolr.avif", price: 4999.99, stars: 4 },
+    { id: 3, name: "5 Smart phone ", image: "/phone.jpeg", price: 10999.99, stars: 5 },
+   { id: 4, name: "Laptops with 1080p Full HD displays that offer decent value ", image: "/Leptop.webp", price: 30999.99, stars: 4 },
+  { id: 5, name: "Pant 8-9y red", image: "/pant.webp", price: 139.99, stars: 4 },
+    { id: 6, name: "School Bags", image: "/bages.avif", price: 189.99, stars: 4 },
+
   ];
 const handleAddToCart = (product: { id: number; name: string; price: number }) => {
   if (typeof window !== 'undefined') {
