@@ -18,12 +18,12 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const cards = [
-    { id: 1, name: "Motorola G05", image: "/Phone/2.webp", price: 15999, stars: 3 },
-    { id: 2, name: "iPhone 16 Pro", image: "/phone/3.webp", price: 14999.99, stars: 4 },
-    { id: 3, name: "Xiaomi 15", image: "/Phone/12.webp", price: 11999.99, stars: 5 },
-    { id: 4, name: "Samsung phones in 2023 — Galaxy S23, Galaxy Z Fold 5 and more", image: "/phone/s.jpg", price: 9999.99, stars: 4 },
-    { id: 5, name: "Oppo F25 Pro launched in India, will go on sale from March 5", image: "/phone/o.avif", price: 13999.99, stars: 4 },
-    { id: 6, name: "These two new smartphones in China look a lot like the iPhone X", image: "/phone/5.webp", price: 18999.99, stars: 4 },
+    { id: 1, name: "NENI COLLECTIONS PU Hand Bage For Women,s And Girls,s Top Hand Bag Green Colour", image: "/bage/1.jpg", price: 999, stars: 3 },
+    { id: 2, name: "Frontsy trolley bag", image: "/bage/2.webp", price: 1099.99, stars: 4 },
+    { id: 3, name: "Back Pack Bage", image: "/bage/3.jpg", price: 149.99, stars: 5 },
+    { id: 4, name: "Beige cotton full", image: "/bage/4.jpg", price: 700, stars: 4 },
+    { id: 5, name: "Men's Black Slim Fit Pant", image: "/bage/5.webp", price: 699.99, stars: 4 },
+    { id: 6, name: "SCHOOL PANT GREY", image: "/bage/6.webp", price: 250, stars: 4 },
   ];
 
   const handleAddToCart = (product: { id: number; name: string; price: number }) => {
@@ -53,7 +53,7 @@ export default function Home() {
 
       <div className="max-w-7xl mx-auto  mt-2">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Smart Phone</h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0"> Bage & Pants</h1>
           <input
             type="text"
             placeholder="Search..."
@@ -76,7 +76,7 @@ export default function Home() {
                       src={card.image}
                       alt={card.name}
                       fill
-                      className="object-cover"
+                      className="overflow-hidden "
                     />
                   </div>
                 </CardHeader>

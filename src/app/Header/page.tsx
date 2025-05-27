@@ -49,9 +49,9 @@ import { BookmarkIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
                 { name: "Books", href: "/Menu/Books" },
                 { name: "Smart Phones", href: "/Menu/Phone" },
                 { name: "Coolers", href: "/Menu/Coolers" },
-                { name: "Bags & Pants", href: "/Menu/BagsPants" },
-                { name: "Laptops", href: "/Menu/Laptops" },
-                
+                { name: "Bags & Pants", href: "/Menu/pant" },
+                { name: "Laptops", href: "/Menu/laptop" },
+
               ].map(({ name, href }) => (
                 <li key={name} className="px-2 py-1 rounded hover:bg-gray-100">
                   <Link href={href} className="block w-full text-gray-600 hover:text-gray-800">

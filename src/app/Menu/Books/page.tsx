@@ -18,12 +18,12 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const cards = [
-    { id: 1, name: "Constitution Of India", image: "/001.jpeg", price: 199.99, stars: 3 },
-    { id: 2, name: "3 Best water air cooler", image: "/coolr.avif", price: 4999.99, stars: 4 },
-    { id: 3, name: "5 Smart phone ", image: "/phone.jpeg", price: 10999.99, stars: 5 },
-    { id: 4, name: "Laptops with 1080p Full HD displays that offer decent value", image: "/Leptop.webp", price: 30999.99, stars: 4 },
-    { id: 5, name: "Pant 8-9y red", image: "/pant.webp", price: 139.99, stars: 4 },
-    { id: 6, name: "School Bags", image: "/bages.avif", price: 189.99, stars: 4 },
+    { id: 1, name: "India history", image: "/Books/1.webp", price: 199.99, stars: 3 },
+    { id: 2, name: "CBSE Class 12 Political Science", image: "/Books/2.webp", price: 99.99, stars: 4 },
+    { id: 3, name: "CBSE Class 12 Sanskrit", image: "/Books/3.webp", price: 119.99, stars: 5 },
+    { id: 4, name: "CBSE Class 12 Hindi", image: "/Books/4.jpg", price: 129.99, stars: 4 },
+    { id: 5, name: "Solutions for class 7 Hindi", image: "/Books/5.jpg", price: 139.99, stars: 4 },
+    { id: 6, name: "Worksheets for Class 7 Maths", image: "/Books/6.png", price: 189.99, stars: 4 },
   ];
 
   const handleAddToCart = (product: { id: number; name: string; price: number }) => {
@@ -76,7 +76,7 @@ export default function Home() {
                       src={card.image}
                       alt={card.name}
                       fill
-                      className="object-cover"
+                      className="overflow-hidden"
                     />
                   </div>
                 </CardHeader>
