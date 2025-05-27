@@ -88,7 +88,7 @@ import { BookmarkIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
         <Link href="/Session/Bookstore">
           <div className="inline-flex items-center space-x-2 hover:bg-gray-100 cursor-pointer px-4 py-2 rounded">
             <BookmarkIcon className="w-6 h-6 text-black" />
-            <span className="text-black font-bold">Bookstore</span>
+            <span className="text-black font-bold">All Items</span>
           </div>
         </Link>
       </div>

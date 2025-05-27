@@ -5,7 +5,6 @@ import { TrashIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import PageBreadcrumbs from '@/Components/PageBreadcrumbs/PageBreadcrumbs';
 
-// ✅ Define proper type for cart items
 interface CartItem {
   id: number;
   name: string;
@@ -44,15 +43,14 @@ export default function CartPage() {
     updateCart(newCart);
   };
 
-  const grandTotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const handleOrder = () => {
+    // Simulate placing an order
+    alert('Your order has been placed!');
+    updateCart([]); // Clear the cart after ordering
+  };
 
-  const totalItems = cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const grandTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -112,6 +110,12 @@ export default function CartPage() {
                       <PlusIcon className="w-4 h-4" />
                     </button>
                   </div>
+                   <button
+              onClick={handleOrder}
+              className="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition"
+            >
+              Order Now
+            </button>
 
                   <button
                     onClick={() => removeItem(item.id)}
@@ -129,6 +133,7 @@ export default function CartPage() {
             <p className="text-2xl font-semibold text-gray-800">
               Grand Total: ${grandTotal.toFixed(2)}
             </p>
+           
           </div>
         </>
       )}
