@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { TrashIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import PageBreadcrumbs from '@/Components/PageBreadcrumbs/PageBreadcrumbs';
+import { useRouter } from 'next/navigation';
+
 
 interface CartItem {
   id: number;
@@ -14,6 +16,8 @@ interface CartItem {
 }
 
 export default function CartPage() {
+    const router = useRouter();
+
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
@@ -42,12 +46,13 @@ export default function CartPage() {
     });
     updateCart(newCart);
   };
-
-  const handleOrder = () => {
-    // Simulate placing an order
-    alert('Your order has been placed!');
-    updateCart([]); // Clear the cart after ordering
+  
+  const handleOrderClick = () => {
+    alert('Order placed successfully!');
+    updateCart([]); // Clear the cart after redirecting
   };
+
+  
 
   const grandTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -111,7 +116,7 @@ export default function CartPage() {
                     </button>
                   </div>
                    <button
-              onClick={handleOrder}
+              onClick={handleOrderClick}
               className="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition"
             >
               Order Now

@@ -68,8 +68,8 @@ import { BookmarkIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
             <h3 className="text-sm font-semibold text-gray-700 mb-2">Order by</h3>
             <ul className="space-y-1 text-sm text-gray-600">
               {[
-                { name: "Published At", href: "/books?sort=published" },
-                { name: "Price", href: "/books?sort=price" },
+                { name: "Published At", href: "/Menu/Allitem" },
+
               ].map(({ name, href }) => (
                 <li key={name} className="px-2 py-1 rounded hover:bg-gray-100">
                   <Link href={href} className="block w-full text-gray-600 hover:text-gray-800">
