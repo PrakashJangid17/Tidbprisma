@@ -29,10 +29,14 @@ export default function CartPage() {
     localStorage.setItem('cart', JSON.stringify(newCart));
   };
 
-  const removeItem = (id: number) => {
-    const newCart = cart.filter(item => item.id !== id);
-    updateCart(newCart);
-  };
+ const removeItemFromCart = (productId: number) => {
+  setCart((prevItems) => {
+    const updatedItems = prevItems.filter(item => item.id !== productId);
+    // Update localStorage as well
+    localStorage.setItem('cart', JSON.stringify(updatedItems));
+    return updatedItems;
+  });
+};
 
   const changeQuantity = (id: number, delta: number) => {
     const newCart = cart.map(item => {
@@ -120,7 +124,7 @@ export default function CartPage() {
             </button>
 
                   <button
-                    onClick={() => removeItem(item.id)}
+                   onClick={() => removeItemFromCart(item.id)}
                     className="text-red-500 hover:text-red-600 transition"
                     title="Remove from cart"
                   >
