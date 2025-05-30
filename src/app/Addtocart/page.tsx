@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { TrashIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import PageBreadcrumbs from '@/Components/PageBreadcrumbs/PageBreadcrumbs';
-import { useRouter } from 'next/navigation';
-
 
 interface CartItem {
   id: number;
@@ -16,7 +14,6 @@ interface CartItem {
 }
 
 export default function CartPage() {
-    const router = useRouter();
 
   const [cart, setCart] = useState<CartItem[]>([]);
 
