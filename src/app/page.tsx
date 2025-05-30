@@ -11,37 +11,55 @@ import {
 import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/navigation';
+import { useCart } from '@/Components/CartContext/page';
+
+interface Product {
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  stars: number;
+}
+
+interface CartItem extends Product {
+  quantity: number;
+}
 
 export default function Home() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
+  const { addToCart } = useCart();
 
-  const cards = [
+  const cards: Product[] = [
     { id: 1, name: "Constitution Of India", image: "/001.jpeg", price: 199.99, stars: 3 },
     { id: 2, name: "3 Best water air cooler", image: "/coolr.avif", price: 4999.99, stars: 4 },
-    { id: 3, name: "5 Smart phone ", image: "/phone.jpeg", price: 10999.99, stars: 5 },
-    { id: 4, name: "Laptops with 1080p Full HD displays that offer decent value", image: "/Leptop.webp", price: 30999.99, stars: 4 },
+    { id: 3, name: "5 Smart phone", image: "/phone.jpeg", price: 10999.99, stars: 5 },
+    { id: 4, name: "Laptops with 1080p Full HD displays", image: "/Leptop.webp", price: 30999.99, stars: 4 },
     { id: 5, name: "Pant 8-9y red", image: "/pant.webp", price: 139.99, stars: 4 },
     { id: 6, name: "School Bags", image: "/bages.avif", price: 189.99, stars: 4 },
   ];
 
-  const handleAddToCart = (product: { id: number; name: string; price: number }) => {
-    if (typeof window !== 'undefined') {
-      const existingCart = localStorage.getItem('cart');
-      const cart = existingCart ? JSON.parse(existingCart) : [];
+  const handleAddToCart = (product: Product) => {
+    try {
+      const existingCart = typeof window !== 'undefined' ? localStorage.getItem('cart') : null;
+      const cart: CartItem[] = existingCart ? JSON.parse(existingCart) : [];
 
-      const existingIndex = cart.findIndex((item: { id: number }) => item.id === product.id);
-      if (existingIndex !== -1) {
-        cart[existingIndex].quantity += 1;
+      const index = cart.findIndex(item => item.id === product.id);
+      if (index !== -1) {
+        cart[index].quantity += 1;
       } else {
         cart.push({ ...product, quantity: 1 });
       }
+
       localStorage.setItem('cart', JSON.stringify(cart));
-      router.push('/Addtocart');
+      addToCart?.({ ...product, quantity: 1 }); 
+
+      //alert(`${product.name} has been added to your cart!`);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
     }
   };
 
-  // 🔍 Filter logic
   const filteredCards = cards.filter(card =>
     card.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

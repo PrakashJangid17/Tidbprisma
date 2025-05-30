@@ -1,36 +1,29 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// app/layout.tsx (do NOT include "use client" here)
+
 import "./globals.css";
-import Providers from "@/Components/Providers/page";
-import Header from "./Header/page";
+import { Inter } from "next/font/google";
+import { CartProvider } from "@/Components/CartContext/page"; // Ensure this path is correct
+import Header from "@/app/Header/page"; // Ensure this path is correct
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Tidb prisma",
   description: "A Prisma client for Tidb",
 };
 
+const inter = Inter({ subsets: ["latin"] });
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Providers>
+      <body className={inter.className}>
+        <CartProvider>
           <Header />
           {children}
-        </Providers>
+        </CartProvider>
       </body>
     </html>
   );
