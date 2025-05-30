@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -12,6 +13,7 @@ import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/Components/CartContext/page';
+import PageBreadcrumbs from '@/Components/PageBreadcrumbs/PageBreadcrumbs';
 
 interface Product {
   id: number;
@@ -28,11 +30,13 @@ interface CartItem extends Product {
 export default function Home() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
+  const [priceFilter, setPriceFilter] = useState('all');
+  const [successMessage, setSuccessMessage] = useState('');
   const { addToCart } = useCart();
 
-  const cards: Product[] = [
+   const cards: Product[] = [
     { id: 1, name: "Constitution Of India", image: "/001.jpeg", price: 199.99, stars: 3 },
-    { id: 2, name: "3 Best water air cooler", image: "/coolr.avif", price: 4999.99, stars: 4 },
+     { id: 2, name: "3 Best water air cooler", image: "/coolr.avif", price: 4999.99, stars: 4 },
     { id: 3, name: "5 Smart phone", image: "/phone.jpeg", price: 10999.99, stars: 5 },
     { id: 4, name: "Laptops with 1080p Full HD displays", image: "/Leptop.webp", price: 30999.99, stars: 4 },
     { id: 5, name: "Pant 8-9y red", image: "/pant.webp", price: 139.99, stars: 4 },
@@ -52,31 +56,65 @@ export default function Home() {
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));
-      addToCart?.({ ...product, quantity: 1 }); 
+      addToCart?.({ ...product, quantity: 1 });
 
-      //alert(`${product.name} has been added to your cart!`);
+      // ✅ Show success message
+      setSuccessMessage(`${product.name} added to cart!`);
+      setTimeout(() => setSuccessMessage(''), 3000);
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
   };
 
-  const filteredCards = cards.filter(card =>
-    card.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredCards = cards.filter((card) => {
+    const matchesSearch = card.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesPrice =
+      priceFilter === 'all' ||
+      (priceFilter === 'below100' && card.price < 100) ||
+      (priceFilter === '100to200' && card.price >= 100 && card.price <= 200) ||
+      (priceFilter === '200to500' && card.price > 200 && card.price <= 500) ||
+      (priceFilter === 'above500' && card.price > 500);
+
+    return matchesSearch && matchesPrice;
+  });
 
   return (
     <div className="min-h-screen bg-white py-10 px-4 sm:px-6 lg:px-8 mt-2 rounded-lg">
+      <PageBreadcrumbs label="All items" />
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">All Items</h1>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
+          <h1 className="text-3xl font-bold text-gray-800">All items</h1>
+
           <input
             type="text"
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full sm:w-72 outline-none border border-gray-300 rounded-md p-2"
+            className="w-ful sm:w-72 outline-none border border-gray-300 rounded-md p-2"
           />
+
+          <select
+            value={priceFilter}
+            onChange={(e) => setPriceFilter(e.target.value)}
+            className="w-full sm:w-60 border border-gray-300 rounded-md p-2"
+          >
+            <option value="all">All Prices</option>
+            <option value="below100">Below ₹100</option>
+            <option value="100to200">₹100 – ₹200</option>
+            <option value="200to500">₹200 – ₹500</option>
+            <option value="above500">More than ₹500</option>
+          </select>
         </div>
+
+        {/* ✅ Show Success Message */}
+        {successMessage && (
+          <div className="mb-4 p-3 rounded text-green-800 bg-green-100 border border-green-300">
+            {successMessage}
+          </div>
+        )}
+
+        <hr className="my-4" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredCards.length > 0 ? (
@@ -99,7 +137,7 @@ export default function Home() {
                 <CardBody className="p-4">
                   <h2 className="text-lg font-semibold text-gray-800 mb-2">{card.name}</h2>
                   <Divider className="my-2" />
-                  <div className="text-xl font-bold text-gray-700 mb-2">${card.price}</div>
+                  <div className="text-xl font-bold text-gray-700 mb-2">₹{card.price.toFixed(2)}</div>
 
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex items-center space-x-1">
@@ -142,3 +180,4 @@ export default function Home() {
     </div>
   );
 }
+

@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { BookmarkIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { BookmarkIcon, ShoppingCartIcon, HomeIcon } from "@heroicons/react/24/solid";
 import { useCart } from "@/Components/CartContext/page"; // adjust path if needed
 
 export default function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const { cartItems  } = useCart(); // cartItems from CartContext
+  const { cartItems } = useCart(); // cartItems from CartContext
 
   return (
     <nav className="bg-white shadow-md rounded-md px-4 py-2 sm:py-4 flex flex-wrap items-center justify-between gap-4 sm:gap-0 relative">
@@ -88,8 +88,16 @@ export default function DropdownMenu() {
         </Link>
       </div>
 
-      {/* Right: Cart Icon + Badge */}
-      <div className="relative">
+      {/* Right: Home Icon + Cart Icon */}
+      <div className="flex items-center space-x-4">
+        {/* Home Icon */}
+        <Link href="/">
+          <div className="p-2 hover:bg-gray-100 cursor-pointer rounded-full">
+            <HomeIcon className="h-6 w-6 text-gray-700" />
+          </div>
+        </Link>
+
+        {/* Cart Icon */}
         <Link href="/Addtocart">
           <div className="p-2 hover:bg-gray-100 cursor-pointer rounded-full relative">
             <ShoppingCartIcon className="h-6 w-6 text-blue-600" />
